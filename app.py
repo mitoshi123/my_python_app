@@ -1,8 +1,8 @@
 # app.py
 
 # 1. Твоя функція (її ми ТЕСТУЄМО)
-def add(a, b):
-    return a + b
+def calculate_area(width, height): # Перевір цю назву!
+    return width * height
 
 # 2. Введення даних (його ми ХОВАЄМО від тестів)
 if __name__ == "__main__":
