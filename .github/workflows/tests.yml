@@ -1,0 +1,15 @@
+name: Python tests
+on: [push] # Запускати щоразу, коли ти робиш push
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # Копіює твій код на сервер
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run pytest
+        run: |
+          pip install pytest
+          pytest
