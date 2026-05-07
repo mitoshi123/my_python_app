@@ -1,15 +1,24 @@
 name: Python tests
-on: [push] # Запускати щоразу, коли ти робиш push
+
+on: [push, pull_request]
 
 jobs:
-  run-tests:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # Копіює твій код на сервер
-      - uses: actions/setup-python@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-     - name: Run tests
+
+      - name: Install dependencies
         run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          pip install pytest
+
+      - name: Run tests
+        run: |
+          export PYTHONPATH=$PYTHONPATH:.
           pytest
